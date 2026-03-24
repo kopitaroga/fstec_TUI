@@ -237,14 +237,17 @@ def generate(limit=None,input_file="report.cvs"):
         doc.add_paragraph("Исходя из данных инвентаризации определено:")
         doc.add_paragraph(f"Тип компонента информационной системы, подверженного уязвимости: {get_v(row, colums.numbers['type_comp'])}")
         k_res = float( get_v(row, colums.numbers['k_k1']))  * float(get_v(row, colums.numbers['k_k2']))
+        k_res = round(k_res,2)
         add_centered_formula(doc, f"K=k ×K={get_v(row, colums.numbers['k_k1'])}×{get_v(row, colums.numbers['k_k2'])}={k_res}")
        
         doc.add_paragraph(f"Количество уязвимых компонентов информационной системы: {comp_text}")
         l_res = float(get_v(row, colums.numbers['l_l1'])) * float(get_v(row, colums.numbers['l_l2']))
+        l_res = round(l_res,2)
         add_centered_formula(doc, f"L=l×L={get_v(row, colums.numbers['l_l1'])}×{get_v(row, colums.numbers['l_l2'])}={l_res}")
        
         doc.add_paragraph(f"Влияние на эффективность защиты периметра информационной системы: уязвимое программное, программно-аппаратное средство {net_text} из сети «Интернет».")
         p_res = float(get_v(row, colums.numbers['p_p1'])) * float(get_v(row, colums.numbers['p_p2']))
+        p_res = round(p_res,2)
         add_centered_formula(doc, f"P=p×P={get_v(row, colums.numbers['p_p1'])}×{get_v(row, colums.numbers['p_p2'])}={p_res}")
 
         doc.add_paragraph("Таким образом, определяется показатель влияния уязвимости на функционирование информационной системы Iinfr.")
